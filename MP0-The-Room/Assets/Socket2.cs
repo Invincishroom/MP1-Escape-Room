@@ -1,20 +1,19 @@
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
-
-public class Socket1 : MonoBehaviour
+public class Socket2 : MonoBehaviour
 {
     public XRSocketInteractor socket;
     public void OnObjectPlaced()
     {
         UnityEngine.XR.Interaction.Toolkit.Interactables.IXRSelectInteractable interactable = socket.GetOldestInteractableSelected();
-        if (interactable != null && interactable.transform.name == "Clue1")
+        if (interactable != null && interactable.transform.name == "Clue2")
         {
-            CluesAndOpenDoor.clue1Collected = true;
+            CluesAndOpenDoor.clue3Collected = true;
         }
     }
     public void OnObjectRemoved()
     {
-        CluesAndOpenDoor.clue1Collected = false;
+        CluesAndOpenDoor.clue3Collected = false;
     }
     public void Start()
     {

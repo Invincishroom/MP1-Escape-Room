@@ -6,18 +6,16 @@ namespace NavKeypad {
 public class KeypadInteractionFPV : MonoBehaviour
 {
     public InputActionReference interactAction;
-    private Transform PlayerPosition;
+    public Transform PlayerPosition;
     private GameObject currentButton;
     private Material buttonMaterial;
     public Material HighlightMaterial;
     private void Awake(){
-        PlayerPosition = GameObject.Find("Right Controller").transform;
         interactAction.action.Enable();
         interactAction.action.performed += ctx => Interact();
     }
     private void Interact()
     {
-        PlayerPosition = GameObject.Find("Right Controller").transform;
         Ray ray = new Ray(PlayerPosition.position, PlayerPosition.forward);
         float maxDistance = 3f; // Adjust as needed
         if (Physics.Raycast(ray, out var hit, maxDistance))
@@ -30,13 +28,12 @@ public class KeypadInteractionFPV : MonoBehaviour
     }
     private void Update()
     {
-        PlayerPosition = GameObject.Find("Right Controller").transform;
         Ray ray = new Ray(PlayerPosition.position, PlayerPosition.forward);
         float maxDistance = 3f; // Adjust as needed
         if (Physics.Raycast(ray, out var hit, maxDistance))
         {
-            Debug.DrawLine(ray.origin, hit.point, Color.red);
-            Debug.Log($"Hit: {hit.collider.gameObject.name}");
+            //Debug.DrawLine(ray.origin, hit.point, Color.red);
+            //Debug.Log($"Hit: {hit.collider.gameObject.name}");
             if (hit.collider.TryGetComponent(out KeypadButton _))
             {
                 if (currentButton != hit.collider.gameObject)

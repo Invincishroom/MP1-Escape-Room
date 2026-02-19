@@ -17,6 +17,7 @@ public class GameStart : MonoBehaviour
         characterController.enabled = false;
         characterController.transform.position = targetPosition.position;
         characterController.enabled = true;
+        CluesAndOpenDoor.GameOver = 0; // Start the game
     }
 
 }
